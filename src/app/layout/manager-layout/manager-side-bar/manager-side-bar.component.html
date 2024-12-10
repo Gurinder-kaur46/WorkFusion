@@ -1,33 +1,52 @@
 <nav class="manager-sidebar">
-    <div class="profile-container">
+  <div class="profile-container">
       <div class="profile-pic">
-        <img src="assets/employee1.jpg" alt="Profile Picture" />
+          <img src="assets/employee1.jpg" alt="Profile Picture" />
       </div>
       <div class="manager-info">
-        <span class="manager-name">Jane Smith</span>
+          <span class="manager-name">Jane Smith</span>
       </div>
-    </div>
-    <a routerLink="managerhome" routerLinkActive="active">
+  </div>
+
+  <a routerLink="managerdashboard" routerLinkActive="active">
       <i class="fas fa-tachometer-alt"></i> Dashboard
-    </a>
-    <a routerLink="managerteam" routerLinkActive="active">
+  </a>
+
+  <a routerLink="managerteam-management" routerLinkActive="active">
       <i class="fas fa-users"></i> Team Management
-    </a>
-    <a routerLink="managerprojects" routerLinkActive="active">
+  </a>
+
+  <!-- Projects Link with Click to Toggle Add Project Field -->
+  <a (click)="toggleProjectOptions()" routerLink="managerprojects" routerLinkActive="active">
       <i class="fas fa-folder-open"></i> Projects
-    </a>
-    <a routerLink="managertasks" routerLinkActive="active">
-      <i class="fas fa-tasks"></i> Task Assignments
-    </a>
-    <a routerLink="managerperformance" routerLinkActive="active">
-      <i class="fas fa-chart-line"></i> Performance Reviews
-    </a>
-    <a routerLink="managerreports" routerLinkActive="active">
-      <i class="fas fa-file-alt"></i> Reports
-    </a>
-    <a routerLink="managerleave-requests" routerLinkActive="active">
-      <i class="fas fa-plane"></i> Leave Approvals
+  </a>
+
+  <!-- Conditionally show Add Project link -->
+  <div *ngIf="showProjectOptions" style="margin-left: 20px;">
+    <a routerLink="projectslist" routerLinkActive="active">
+      <i class="fas fa-list"></i> projects list
     </a>
     
-  </nav>
+    <a routerLink="projectrequests" routerLinkActive="active">
+      <i class="fas fa-folder-plus"></i> Add Project
+    </a>
+  </div>
+
+
+  <a routerLink="managertask-assignments" routerLinkActive="active">
+      <i class="fas fa-tasks"></i> Task Assignments
+  </a>
+  <a routerLink="managerperformance-reviews" routerLinkActive="active">
+      <i class="fas fa-chart-line"></i> Performance Reviews
+  </a>
+  <a routerLink="managerreports" routerLinkActive="active">
+      <i class="fas fa-file-alt"></i> Reports
+  </a>
+  <a routerLink="/manager/manager-welcome">
+    <i class="fa-solid fa-comments"></i> Chat
+  </a>
   
+  <a routerLink="managerleave-requests" routerLinkActive="active">
+      <i class="fas fa-plane"></i> Leave Approvals
+  </a>
+</nav>

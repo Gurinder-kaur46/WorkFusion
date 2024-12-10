@@ -1,4 +1,4 @@
-<div class="employee-profile" *ngIf="employee">
+<!--<div class="employee-profile" *ngIf="employee">
   
     <div class="profile-card">
       <div class="profile-image">
@@ -23,7 +23,7 @@
         <button (click)="editMode = !editMode">Update</button>
       </div>
   
-      <!-- Update Form -->
+      
       <form *ngIf="editMode" (ngSubmit)="updateEmployee()" #updateForm="ngForm">
         <label>Email: <input [(ngModel)]="employee.email" name="email" /></label>
         <label>Phone: <input [(ngModel)]="employee.phone" name="phone" /></label>
@@ -31,7 +31,7 @@
         <label>Permanent Address: <input [(ngModel)]="employee.permanentAddress" name="permanentAddress" /></label>
         <label>Date of Birth: <input [(ngModel)]="employee.dateOfBirth" name="dateOfBirth" type="date" /></label>
         
-        <!-- Image Upload -->
+        
         <label>Upload Image:
           <input type="file" (change)="onImageSelected($event)" />
         </label>
@@ -41,4 +41,5 @@
       </form>
     </div>
   </div>
-  
+-->
+  <h1>hello</h1>

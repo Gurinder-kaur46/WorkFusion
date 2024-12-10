@@ -45,8 +45,8 @@ import { EmployeeLoginComponent } from './outer/employee-login/employee-login.co
 import { ClientLoginComponent } from './outer/client-login/client-login.component';
 import { ManagerLoginComponent } from './outer/manager-login/manager-login.component';
 import { UserService } from './services/user.service';
-import { HttpClientModule } from '@angular/common/http';
-import { ToastrModule } from 'ngx-toastr';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
+import { provideToastr, ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthenticationService } from './services/authentication.service';
 import { EmployeeSideBarComponent } from './layout/employee-layout/employee-side-bar/employee-side-bar.component';
@@ -64,6 +64,26 @@ import { ManagerSideBarComponent } from './layout/manager-layout/manager-side-ba
 import { EmployeeService } from './services/employee.service';
 import { AdminService } from './services/admin.service';
 import { UserRequestsComponent } from './admin/user-requests/user-requests.component';
+import { EmployeesettingsComponent } from './employee/employeesettings/employeesettings.component';
+import { ManagerdashboardComponent } from './manager/managerdashboard/managerdashboard.component';
+import { ManagerteamManagementComponent } from './manager/managerteam-management/managerteam-management.component';
+import { ManagerprojectsComponent } from './manager/managerprojects/managerprojects.component';
+import { ManagertaskAssignmentsComponent } from './manager/managertask-assignments/managertask-assignments.component';
+import { ManagerperformanceReviewsComponent } from './manager/managerperformance-reviews/managerperformance-reviews.component';
+import { ManagerreportsComponent } from './manager/managerreports/managerreports.component';
+import { ProjectslistComponent } from './manager/managerprojects/projectslist/projectslist.component';
+import { AddprojectsComponent } from './manager/managerprojects/addprojects/addprojects.component';
+import { authinterceptorInterceptor } from './interceptor/authinterceptor.interceptor';
+import { UpdateprojectsComponent } from './manager/managerprojects/updateprojects/updateprojects.component';
+import { ManagerService } from './services/manager.service';
+import { ProjectrequestsComponent } from './manager/managerprojects/projectrequests/projectrequests.component';
+import { ManagerleaveRequestsComponent } from './manager/managerleave-requests/managerleave-requests.component';
+import { ManagerChatComponent } from './manager/chat/manager-chat/manager-chat.component';
+import { ManagerJoinRoomComponent } from './manager/chat/manager-join-room/manager-join-room.component';
+import { ManagerWelcomeComponent } from './manager/chat/manager-welcome/manager-welcome.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -121,10 +141,27 @@ import { UserRequestsComponent } from './admin/user-requests/user-requests.compo
     EmployeeHeaderComponent,
     EmployeeFooterComponent,
     ManagerSideBarComponent,
-    UserRequestsComponent
+    UserRequestsComponent,
+    EmployeesettingsComponent,
+    ManagerdashboardComponent,
+    ManagerteamManagementComponent,
+    ManagerprojectsComponent,
+    ManagertaskAssignmentsComponent,
+    ManagerperformanceReviewsComponent,
+    ManagerreportsComponent,
+    ProjectslistComponent,
+    AddprojectsComponent,
+    UpdateprojectsComponent,
+    ProjectrequestsComponent,
+    ManagerleaveRequestsComponent,
+    ManagerChatComponent,
+    ManagerJoinRoomComponent,
+    ManagerWelcomeComponent,
+    
    
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
@@ -136,7 +173,18 @@ import { UserRequestsComponent } from './admin/user-requests/user-requests.compo
       preventDuplicates: true, // Prevent duplicate toasts
     })
   ],
-  providers: [UserService,AuthenticationService,EmployeeService,AdminService],
+  // providers: [UserService,AuthenticationService,EmployeeService,AdminService],
+  // bootstrap: [AppComponent]
+
+  providers: [UserService,AuthenticationService,EmployeeService,AdminService,ManagerService,
+    provideToastr(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: authinterceptorInterceptor,
+      multi: true
+    },
+    provideHttpClient(withFetch())
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -4,14 +4,14 @@
     </div>
     <nav class="header-nav">
       <a routerLink="managerprofile" routerLinkActive="active">
-        <i class="fas fa-user"></i> Profile
+        <i class="fas fa-user"></i> 
       </a>
       <a routerLink="managernotifications" routerLinkActive="active">
-        <i class="fas fa-bell"></i> Notifications
+        <i class="fas fa-bell"></i>
       </a>
-      <a routerLink="managerlogout" routerLinkActive="active">
-        <i class="fas fa-sign-out-alt"></i> Logout
-      </a>
+      <button class="logout-btn" (click)="logout()">
+        <i class="fas fa-sign-out-alt" ></i> 
+      </button>
     </nav>
   </header>
   

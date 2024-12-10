@@ -1,15 +1,15 @@
 /* Manager Header */
 .manager-header {
-    background-color: #0057a2;
+    background-color:  #004aad;
     color: #ffffff;
     padding: 15px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
     position: sticky;
     top: 0;
-    width: 950px;
+    width: 1300px;
     z-index: 10;
     margin-left: 0px; /* Offset by sidebar width */
   }
@@ -38,6 +38,21 @@
     gap: 8px;
     transition: color 0.3s ease;
   }
+
+  .logout-btn {
+    background: none; /* Remove any background color */
+    border: none; /* Remove the white border */
+    padding: 5px; /* Add a little padding for click area */
+    font-size: 20px; /* Adjust icon size */
+    color: white; /* Set icon color */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+  .logout-btn:hover {
+    color: #ffd700; /* Add a hover effect (optional) */
+    transform: scale(1.1); /* Slight zoom effect on hover (optional) */
+  }
+  
   
   .manager-header .header-nav a:hover {
     color: #ffcc00;
@@ -46,4 +61,6 @@
   .manager-header .header-nav i {
     font-size: 1.2rem;
   }
-  
+  /* .logout-btn{
+  border: none;
+  } */
